@@ -10,7 +10,7 @@
 
 include { JSONMANAGER               } from '../../modules/local/jsonmanager'
 include { samplesheetToList         } from 'plugin/nf-schema'
-
+include { BINDCRAFT                 } from '../../modules/local/bindcraft'
 /*
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     SUBWORKFLOW TO INITIALISE PIPELINE

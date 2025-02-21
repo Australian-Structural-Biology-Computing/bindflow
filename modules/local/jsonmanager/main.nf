@@ -31,6 +31,8 @@ process JSONMANAGER {
                 row['starting_pdb_path'] = row['starting_pdb']
                 row['starting_pdb'] = os.path.basename(row['starting_pdb'])
             row['design_path'] = f"{sample_id}_output"
+            row['lengths'] = [int(row['min_length']), int(row['max_length'])]
+            row['number_of_final_designs'] = int(row['number_of_final_designs'])
             with open(f"{sample_id}.json", 'w') as jsonfile:
                 json.dump(row, jsonfile, indent=2)
         

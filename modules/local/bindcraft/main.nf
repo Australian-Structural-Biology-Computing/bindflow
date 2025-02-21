@@ -13,8 +13,8 @@ process BINDCRAFT {
     path (advanced_settings)
     
     output:
-    tuple val(meta), path("*_output/final_design_stats.csv"), emit: stats
-    tuple val(meta), path("*_output/Accepted/Ranked"), emit: accepted_ranked
+    tuple val(meta), path("*_output/final_design_stats.csv"), emit: stats, optional: true
+    tuple val(meta), path("*_output/Accepted/Ranked"), emit: accepted_ranked, optional: true
     path "versions.yml", emit: versions
 
     when:
@@ -40,7 +40,8 @@ process BINDCRAFT {
 
     stub:
     """
-    touch report.txt
+    mkdir -p s1_output/Accepted/Ranked
+    touch s1_output/final_design_stats.csv
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
