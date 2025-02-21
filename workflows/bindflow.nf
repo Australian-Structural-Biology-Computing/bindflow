@@ -9,6 +9,7 @@ include { paramsSummaryMap       } from 'plugin/nf-schema'
 include { paramsSummaryMultiqc   } from '../subworkflows/nf-core/utils_nfcore_pipeline'
 include { softwareVersionsToYAML } from '../subworkflows/nf-core/utils_nfcore_pipeline'
 include { methodsDescriptionText } from '../subworkflows/local/utils_nfcore_bindflow_pipeline'
+include { RUN_BINDCRAFT } from '../subworkflows/local/run_bindcraft'
 
 /*
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -25,6 +26,9 @@ workflow BINDFLOW {
     ch_versions = Channel.empty()
     ch_multiqc_files = Channel.empty()
 
+    RUN_BINDCRAFT(
+        ch_samplesheet    
+    )
     //
     // Collate and save software versions
     //
@@ -36,11 +40,11 @@ workflow BINDFLOW {
             newLine: true
         ).set { ch_collated_versions }
 
-
+    
     //
     // MODULE: MultiQC
     //
-    ch_multiqc_config        = Channel.fromPath(
+    /*ch_multiqc_config        = Channel.fromPath(
         "$projectDir/assets/multiqc_config.yml", checkIfExists: true)
     ch_multiqc_custom_config = params.multiqc_config ?
         Channel.fromPath(params.multiqc_config, checkIfExists: true) :
@@ -75,9 +79,10 @@ workflow BINDFLOW {
         ch_multiqc_logo.toList(),
         [],
         []
-    )
+    )*/
 
-    emit:multiqc_report = MULTIQC.out.report.toList() // channel: /path/to/multiqc_report.html
+    emit:
+    multiqc_report = Channel.empty()//MULTIQC.out.report.toList() // channel: /path/to/multiqc_report.html
     versions       = ch_versions                 // channel: [ path(versions.yml) ]
 
 }

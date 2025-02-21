@@ -77,7 +77,6 @@ workflow {
         params.plaintext_email,
         params.outdir,
         params.monochrome_logs,
-        
         ZIADBKH_BINDFLOW.out.multiqc_report
     )
 }
