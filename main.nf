@@ -29,14 +29,15 @@ workflow ZIADBKH_BINDFLOW {
 
     take:
     samplesheet // channel: samplesheet read in from --input
-
+    batches
     main:
 
     //
     // WORKFLOW: Run pipeline
     //
     BINDFLOW (
-        samplesheet
+        samplesheet,
+        batches
     )
     emit:
     multiqc_report = BINDFLOW.out.multiqc_report // channel: /path/to/multiqc_report.html
@@ -66,7 +67,8 @@ workflow {
     // WORKFLOW: Run main workflow
     //
     ZIADBKH_BINDFLOW (
-        PIPELINE_INITIALISATION.out.samplesheet
+        PIPELINE_INITIALISATION.out.samplesheet,
+        params.batches
     )
     //
     // SUBWORKFLOW: Run completion tasks

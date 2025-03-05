@@ -21,13 +21,16 @@ workflow BINDFLOW {
 
     take:
     ch_samplesheet // channel: samplesheet read in from --input
+    ch_batches           //  integer: the number of batches to divid the final number of designs on to run bindcraft in parallel
+    
     main:
 
     ch_versions = Channel.empty()
     ch_multiqc_files = Channel.empty()
 
     RUN_BINDCRAFT(
-        ch_samplesheet    
+        ch_samplesheet,
+        ch_batches 
     )
     //
     // Collate and save software versions
