@@ -100,7 +100,8 @@ process RANKER {
             with open('${meta.id}_final_design_stats.csv', mode='w', newline='', encoding='utf-8') as csvfile:
                 writer = csv.DictWriter(csvfile, fieldnames=output_headers)
                 writer.writeheader()
-                for row in main_list:
+                for new_rank, row in enumerate(main_list, start=1):
+                    row["Rank"] = new_rank
                     writer.writerow({key: row[key] for key in output_headers})
 
         # Copy files to Ranked and rename based on new rank

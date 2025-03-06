@@ -13,7 +13,7 @@ process BINDCRAFT {
     path (advanced_settings)
     
     output:
-    tuple val(meta), path("*_output/final_design_stats.csv"), emit: stats
+    tuple val(meta), path("*_final_design_stats.csv"), emit: stats
     tuple val(meta), path("*_output/Accepted/Ranked"), emit: accepted_ranked
     tuple val(meta), path("*_output"), emit: output_dir
     path "versions.yml", emit: versions
@@ -31,7 +31,8 @@ process BINDCRAFT {
         --filters ${filters} \\
         --advanced ${advanced_settings} \\
         $args \\
-        
+    
+    cp *_output/final_design_stats.csv ${meta.id}_${meta.batch}_final_design_stats.csv 
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
@@ -41,8 +42,8 @@ process BINDCRAFT {
 
     stub:
     """
-    mkdir -p s1_output/Accepted/Ranked
-    touch s1_output/final_design_stats.csv
+    mkdir -p s1_1_output/Accepted/Ranked
+    touch s1_output/s1_1_final_design_stats.csv
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":

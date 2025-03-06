@@ -26,14 +26,15 @@ process JSONMANAGER {
     import math
 
     with open("${samplesheet}", 'r') as csvfile:
-        reader = csv.DictReader(csvfile)
+        reader = csv.DictReader(csvfile, quotechar="'")
         for row in reader:
-            batches = ${batches} 
+            batches = ${batches}
+            if batches < 1:
+                batches = 1
             sample_id = row['id']
             if 'starting_pdb' in row:
                 row['starting_pdb_path'] = row['starting_pdb']
                 row['starting_pdb'] = os.path.basename(row['starting_pdb'])
-            row['design_path'] = f"{sample_id}_output"
             row['lengths'] = [int(row['min_length']), int(row['max_length'])]
             number_of_final_designs = int(row['number_of_final_designs'])
             if batches > number_of_final_designs:
@@ -44,6 +45,7 @@ process JSONMANAGER {
             for batch_id in range(0, batches):
                 if batch_id == batches - 1:
                     row['number_of_final_designs'] = number_of_final_designs - batch_id * batch_size
+                row['design_path'] = f"{sample_id}_{batch_id}_output"
                 with open(f"{sample_id}-{batch_id}.json", 'w') as jsonfile:
                     json.dump(row, jsonfile, indent=2)
         
