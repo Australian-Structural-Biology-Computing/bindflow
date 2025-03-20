@@ -22,6 +22,7 @@ workflow BINDFLOW {
     take:
     ch_samplesheet // channel: samplesheet read in from --input
     ch_batches           //  integer: the number of batches to divid the final number of designs on to run bindcraft in parallel
+    quote_char
     
     main:
 
@@ -30,7 +31,8 @@ workflow BINDFLOW {
 
     RUN_BINDCRAFT(
         ch_samplesheet,
-        ch_batches 
+        ch_batches,
+        quote_char
     )
     //
     // Collate and save software versions

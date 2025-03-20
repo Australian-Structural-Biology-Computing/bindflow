@@ -23,13 +23,13 @@ workflow RUN_BINDCRAFT {
     take:
     input             //  string: Path to input samplesheet
     batches           //  integer: the number of batches to divid the final number of designs on to run bindcraft in parallel
-    
+    quote_char
     main:
 
     ch_versions = Channel.empty()
     
     input
-    .splitCsv(header: true, quote : "'")
+    .splitCsv(header: true, quote : quote_char)
     .map {row ->
        [
             row.id, 

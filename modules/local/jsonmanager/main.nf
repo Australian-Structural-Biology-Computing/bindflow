@@ -18,6 +18,7 @@ process JSONMANAGER {
     task.ext.when == null || task.ext.when
 
     script:
+    def quote_char = task.ext.args2 ?: "\""
     """
     #!/usr/bin/env python3
     import csv
@@ -26,7 +27,7 @@ process JSONMANAGER {
     import math
 
     with open("${samplesheet}", 'r') as csvfile:
-        reader = csv.DictReader(csvfile, quotechar="'")
+        reader = csv.DictReader(csvfile, quotechar="\\${quote_char}")
         for row in reader:
             batches = ${batches}
             if batches < 1:
