@@ -42,10 +42,12 @@ process BINDCRAFT {
     """
 
     stub:
+    def version = "1.2.0"
     """
     mkdir -p s1_1_output/Accepted/Ranked
+    touch s1_1_output/Accepted/accepted1.pdb
     touch s1_1_output/Accepted/Ranked/ranked1.pdb
-    touch s1_output/s1_1_final_design_stats.csv
+    touch s1_1_final_design_stats.csv
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
