@@ -15,6 +15,7 @@ process BINDCRAFT {
     output:
     tuple val(meta), path("*_final_design_stats.csv"), emit: stats
     tuple val(meta), path("*_output/Accepted/Ranked"), emit: accepted_ranked
+    tuple val(meta), path("*_output/Accepted/*pdb"), emit: accepted
     tuple val(meta), path("*_output"), emit: output_dir
     path "versions.yml", emit: versions
 
@@ -43,6 +44,7 @@ process BINDCRAFT {
     stub:
     """
     mkdir -p s1_1_output/Accepted/Ranked
+    touch s1_1_output/Accepted/Ranked/ranked1.pdb
     touch s1_output/s1_1_final_design_stats.csv
 
     cat <<-END_VERSIONS > versions.yml
