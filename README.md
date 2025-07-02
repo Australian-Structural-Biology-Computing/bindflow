@@ -30,9 +30,9 @@ The pipeline will be executed until a user-defined number of designs pass the in
 ![bindflow workflow](docs/images/bindflow-img.png)
 
 Bindflow is a wrapper around the BindCraft tool to allow convenient execution on HPC infrastructure. BindCraft includes 4 core binder design modules within a single tool.
-1. Structure proposal (AlphaFold2 hallucination)
+1. Structure proposal (AlphaFold2 multimer hallucination)
 2. Sequence design (SolubleMPNN)
-3. Structure prediction (AlphaFold2 multimer)
+3. Structure prediction (AlphaFold2)
 4. Post-design quality control (PyRosetta)
 > [!WARNING]
 Post-design QC filtering is conducted with PyRosetta. Users must agree to the PyRosetta license terms.
