@@ -1,13 +1,14 @@
-# ziadbkh/bindflow: Changelog
+# Australian-Structural-Biology-Computing/bindflow: Changelog
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## v1.0.0dev - [date]
 
-Initial release of ziadbkh/bindflow, created with the [nf-core](https://nf-co.re/) template.
+Initial release of Australian-Structural-Biology-Computing/bindflow, created with the [nf-core](https://nf-co.re/) template.
 
 ### `Added`
+- [[#PR1](https://github.com/Australian-Structural-Biology-Computing/bindflow/pull/1)] - Add basic workflow documentation.
 
 ### `Fixed`
 
