@@ -12,6 +12,55 @@
                 "pattern": "^\\S+$",
                 "errorMessage": "Sample name must be provided and cannot contain spaces",
                 "meta": ["id"]
+            },
+            "starting_pdb": {
+                "type": "string",
+                "format": "file-path",
+                "exists": true,
+                "pattern": "^\\S+\\.pdb$",
+                "errorMessage": "",
+                "meta": ["starting_pdb"]
+            },
+            "chains": {
+                "type": "string",
+                "pattern": "^\\S+$",
+                "errorMessage": "comma separted list string (max 2 chars)",
+                "meta": ["chains"]
+            },
+            "target_hotspot_residues": {
+                "type": "string",
+                "errorMessage": "comma separated `1,2-10` or chain specific `A1-10,B1-20`",
+                "meta": ["target_hotspot_residues"]
+            },
+            "min_length": {
+                "type": "integer",
+                "minimum": 1,
+                "errorMessage": "",
+                "meta": ["min_length"]
+            },
+            "max_length": {
+                "type": "integer",
+                "minimum": 1,
+                "errorMessage": "",
+                "meta": ["max_length"]
+            },
+            "number_of_final_designs": {
+                "type": "integer",
+                "minimum": 1,
+                "errorMessage": "",
+                "meta": ["number_of_final_designs"]
+            },
+            "settings_filters": {
+                "type": "string",
+                "format": "file-path",
+                "exists": true,
+                "pattern": "^\\S+\\.json$"
+            },
+            "settings_advanced": {
+                "type": "string",
+                "format": "file-path",
+                "exists": true,
+                "pattern": "^\\S+\\.json$"
             }
         },
         "required": ["id"]
