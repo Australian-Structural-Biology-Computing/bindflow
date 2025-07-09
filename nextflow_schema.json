@@ -91,8 +91,37 @@
                     "description": ".",
                     "help_text": "",
                     "fa_icon": "fas fa-file-json"
+                },
+                "error_strategy": {
+                    "type": "string",
+                    "default": "terminate",
+                    "description": ".",
+                    "help_text": "",
+                    "fa_icon": "fas fa-file-json"
                 }
 
+            }
+        },
+        "gadi_options": {
+            "title": "GADI HPC options",
+            "type": "object",
+            "fa_icon": "fas fa-terminal",
+            "description": ".",
+            "required": ["project"],
+            "properties": {
+                "project": {
+                    "type": "string",
+                    "default": "za08",
+                    "description": "Project code on GADI.",
+                    "help_text": ""
+                },
+                "use_dgxa100": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": ".",
+                    "help_text": "",
+                    "fa_icon": "fas fa-file-json"
+                }
             }
         },
         "institutional_config_options": {
@@ -234,6 +263,9 @@
         },
         {
             "$ref": "#/$defs/bindflow_options"
+        },
+        {
+            "$ref": "#/$defs/gadi_options"
         },
         {
             "$ref": "#/$defs/institutional_config_options"
