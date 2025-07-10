@@ -98,7 +98,7 @@ nextflow run Australian-Structural-Biology-Computing/bindflow \
 
 ## Credits
 
-Australian-Structural-Biology-Computing/bindflow was originally written by Ziad Al-Bkhetan.
+Australian-Structural-Biology-Computing/bindflow was originally written by Ziad Al-Bkhetan and Thomas Litfin.
 
 We thank the following people for their extensive assistance in the development of this pipeline:
 
