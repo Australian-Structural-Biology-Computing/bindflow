@@ -13,6 +13,11 @@
                 "errorMessage": "Sample name must be provided and cannot contain spaces",
                 "meta": ["id"]
             },
+            "binder_name": {
+                "type": "string",
+                "errorMessage": "",
+                "meta": ["binder_name"]
+            },
             "starting_pdb": {
                 "type": "string",
                 "format": "file-path",
@@ -33,18 +38,21 @@
             "min_length": {
                 "type": "integer",
                 "minimum": 1,
+                "default": 65,
                 "errorMessage": "",
                 "meta": ["min_length"]
             },
             "max_length": {
                 "type": "integer",
                 "minimum": 1,
+                "default": 150,
                 "errorMessage": "",
                 "meta": ["max_length"]
             },
             "number_of_final_designs": {
                 "type": "integer",
                 "minimum": 1,
+                "default": 100,
                 "errorMessage": "",
                 "meta": ["number_of_final_designs"]
             },
@@ -61,6 +69,6 @@
                 "pattern": "^\\S+\\.json$"
             }
         },
-        "required": ["id"]
+        "required": ["id", "binder_name", "starting_pdb", "chains", "target_hotspot_residues"]
     }
 }
