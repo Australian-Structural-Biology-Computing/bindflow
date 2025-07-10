@@ -63,6 +63,11 @@ workflow PIPELINE_INITIALISATION {
     )
 
     //
+    // Custom validation for pipeline parameters
+    //
+    validateInputParameters()
+
+    //
     // Create channel from input file provided through params.input
     //
 
@@ -205,3 +210,18 @@ def methodsDescriptionText(mqc_methods_yaml) {
     return description_html.toString()
 }
 
+//
+// Check and validate pipeline parameters
+//
+def validateInputParameters() {
+    if (!params.bindcraft_container) {
+        checkBindcraftContainer()
+    }
+}
+
+//
+// Print a warning when using Bindcraft
+//
+def checkBindcraftContainer() {
+    log.warn "You need to provide a valid path for the singularity/Docker container! or bindcraft needs to be avaialble on the system!"
+}

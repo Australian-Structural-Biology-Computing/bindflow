@@ -43,6 +43,87 @@
                 }
             }
         },
+        "bindflow_options": {
+            "title": "Bindflow options",
+            "type": "object",
+            "fa_icon": "fas fa-terminal",
+            "description": "Define where the pipeline should find input data and save output data.",
+            "required": ["input", "outdir"],
+            "properties": {
+                "bindcraft_container": {
+                    "type": "string",
+                    "format": "file-path",
+                    "exists": true,
+                    "description": "Path to bindcraft container to be used during execution.",
+                    "help_text": "",
+                    "fa_icon": "fas fa-file-csv"
+                },
+                "batches": {
+                    "type": "integer",
+                    "default": 1,
+                    "description": ".",
+                    "help_text": "",
+                    "fa_icon": "fas fa-file-json"
+                },
+                "settings_filters": {
+                    "type": "string",
+                    "format": "file-path",
+                    "exists": true,
+                    "mimetype": "text/json",
+                    "pattern": "^\\S+\\.json$",
+                    "description": "Path to json file containing information on settings filters to be used by default if not provided in sample sheet.",
+                    "help_text": "",
+                    "fa_icon": "fas fa-file-json"
+                },
+                "settings_advanced": {
+                    "type": "string",
+                    "format": "file-path",
+                    "exists": true,
+                    "mimetype": "text/json",
+                    "pattern": "^\\S+\\.json$",
+                    "description": "Path to json file containing information on advanced settings to be used by default if not provided in sample sheet.",
+                    "help_text": "",
+                    "fa_icon": "fas fa-file-json"
+                },
+                "quote_char": {
+                    "type": "string",
+                    "default": "\"",
+                    "description": ".",
+                    "help_text": "",
+                    "fa_icon": "fas fa-file-json"
+                },
+                "error_strategy": {
+                    "type": "string",
+                    "default": "terminate",
+                    "description": ".",
+                    "help_text": "",
+                    "fa_icon": "fas fa-file-json"
+                }
+
+            }
+        },
+        "gadi_options": {
+            "title": "GADI HPC options",
+            "type": "object",
+            "fa_icon": "fas fa-terminal",
+            "description": ".",
+            "required": ["project"],
+            "properties": {
+                "project": {
+                    "type": "string",
+                    "default": "za08",
+                    "description": "Project code on GADI.",
+                    "help_text": ""
+                },
+                "use_dgxa100": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": ".",
+                    "help_text": "",
+                    "fa_icon": "fas fa-file-json"
+                }
+            }
+        },
         "institutional_config_options": {
             "title": "Institutional config options",
             "type": "object",
@@ -180,7 +261,12 @@
         {
             "$ref": "#/$defs/input_output_options"
         },
-        
+        {
+            "$ref": "#/$defs/bindflow_options"
+        },
+        {
+            "$ref": "#/$defs/gadi_options"
+        },
         {
             "$ref": "#/$defs/institutional_config_options"
         },

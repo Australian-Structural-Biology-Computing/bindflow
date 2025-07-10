@@ -1,21 +1,18 @@
 process BINDCRAFT {
     label 'process_long'
 
-    conda "${moduleDir}/environment.yml"
-    container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
-        'australianbiocommons/bindcraft:1.2.0' :
-        'australianbiocommons/bindcraft:1.2.0' }"
-
     input:
-    tuple val(meta), path (target_file)
-    path (pdb)
-    path (filters)
-    path (advanced_settings)
+        tuple val(meta), path (target_file)
+        path (pdb)
+        path (filters)
+        path (advanced_settings)
     
     output:
-    tuple val(meta), path("*_output/final_design_stats.csv"), emit: stats, optional: true
-    tuple val(meta), path("*_output/Accepted/Ranked"), emit: accepted_ranked, optional: true
-    path "versions.yml", emit: versions
+        tuple val(meta), path("*_final_design_stats.csv"), emit: stats
+        tuple val(meta), path("*_output/Accepted/Ranked"), emit: accepted_ranked
+        tuple val(meta), path("*_output/Accepted/*pdb"), emit: accepted
+        tuple val(meta), path("*_output"), emit: output_dir
+        path "versions.yml", emit: versions
 
     when:
     task.ext.when == null || task.ext.when
@@ -30,7 +27,8 @@ process BINDCRAFT {
         --filters ${filters} \\
         --advanced ${advanced_settings} \\
         $args \\
-        
+    
+    cp *_output/final_design_stats.csv ${meta.id}_${meta.batch}_final_design_stats.csv 
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
@@ -39,9 +37,12 @@ process BINDCRAFT {
     """
 
     stub:
+    def version = "1.2.0"
     """
-    mkdir -p s1_output/Accepted/Ranked
-    touch s1_output/final_design_stats.csv
+    mkdir -p s1_1_output/Accepted/Ranked
+    touch s1_1_output/Accepted/accepted1.pdb
+    touch s1_1_output/Accepted/Ranked/ranked1.pdb
+    touch s1_1_final_design_stats.csv
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":

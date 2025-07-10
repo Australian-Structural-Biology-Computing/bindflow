@@ -1,4 +1,4 @@
-# ziadbkh/bindflow: Citations
+# Australian-Structural-Biology-Computing/bindflow: Citations
 
 ## [nf-core](https://pubmed.ncbi.nlm.nih.gov/32055031/)
 
@@ -10,11 +10,29 @@
 
 ## Pipeline tools
 
+- [BindCraft](https://www.biorxiv.org/content/10.1101/2024.09.30.615802v3)
 
+  > Pacesa M, Nickel L, Schellhaas C, Schmidt J, Pyatova E, Kissling L, Barendse P, Choudhury J, Kapoor S, Alcaraz-Serna A, Cho Y. BindCraft: one-shot design of functional protein binders. bioRxiv. 2024 Oct 1:2024-09.
+
+- [AlphaFold2](https://www.nature.com/articles/s41586-021-03819-2)
+
+  > Jumper J, Evans R, Pritzel A, Green T, Figurnov M, Ronneberger O, Tunyasuvunakool K, Bates R, Žídek A, Potapenko A, Bridgland A. Highly accurate protein structure prediction with AlphaFold. nature. 2021 Aug;596(7873):583-9.
+
+- [AlphaFold Multimer](https://www.biorxiv.org/content/10.1101/2021.10.04.463034v2)
+
+  > Evans R, O’Neill M, Pritzel A, Antropova N, Senior A, Green T, Žídek A, Bates R, Blackwell S, Yim J, Ronneberger O. Protein complex prediction with AlphaFold-Multimer. biorxiv. 2021 Oct 4:2021-10.
+
+- [SolubleMPNN](https://www.nature.com/articles/s41586-024-07601-y)
+
+  > Goverde CA, Pacesa M, Goldbach N, Dornfeld LJ, Balbi PE, Georgeon S, Rosset S, Kapoor S, Choudhury J, Dauparas J, Schellhaas C. Computational design of soluble and functional membrane protein analogues. Nature. 2024 Jul 11;631(8020):449-58.
+
+- [PyRosetta](https://academic.oup.com/bioinformatics/article/26/5/689/212442)
+
+  > S. Chaudhury, S. Lyskov & J. J. Gray, "PyRosetta: a script-based interface for implementing molecular modeling algorithms using Rosetta," Bioinformatics, 26(5), 689-691 (2010)
 
 - [MultiQC](https://pubmed.ncbi.nlm.nih.gov/27312411/)
 
-> Ewels P, Magnusson M, Lundin S, Käller M. MultiQC: summarize analysis results for multiple tools and samples in a single report. Bioinformatics. 2016 Oct 1;32(19):3047-8. doi: 10.1093/bioinformatics/btw354. Epub 2016 Jun 16. PubMed PMID: 27312411; PubMed Central PMCID: PMC5039924.
+  > Ewels P, Magnusson M, Lundin S, Käller M. MultiQC: summarize analysis results for multiple tools and samples in a single report. Bioinformatics. 2016 Oct 1;32(19):3047-8. doi: 10.1093/bioinformatics/btw354. Epub 2016 Jun 16. PubMed PMID: 27312411; PubMed Central PMCID: PMC5039924.
 
 ## Software packaging/containerisation tools
 
