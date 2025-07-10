@@ -18,6 +18,20 @@
 
 ### Optional
 
+`error_strategy`: default is `terminate`
+
+`settings_filters`: default setting file if the samplesheet does not have it.
+
+`settings_advanced`: default advanced setting if the sample sheet does not have it.
+
+`batches` numbe rof sampples in each run. Default is 1.
+
+`quote_char` to be used in the sample sheet. Default is "\"".
+
+`project`: Only manadatory when used with GADI HPC.
+
+
+
 ## Samplesheet input
 
 You will need to create a samplesheet with information about the binder design job before running the pipeline. Use this parameter to specify its location. It has to be a comma-separated file with a header row as shown in the examples below.
