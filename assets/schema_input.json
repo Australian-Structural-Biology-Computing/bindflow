@@ -69,6 +69,7 @@
                 "pattern": "^\\S+\\.json$"
             }
         },
-        "required": ["id", "binder_name", "starting_pdb", "chains", "target_hotspot_residues"]
+        "required": ["id", "binder_name", "starting_pdb", "chains", "target_hotspot_residues",
+                    "min_length", "max_length", "number_of_final_designs"]
     }
 }
