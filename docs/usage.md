@@ -6,6 +6,18 @@
 
 <!-- TODO nf-core: Add documentation about anything specific to running your pipeline. For general topics, please point to (and add to) the main nf-core website. -->
 
+## Parameters
+
+### Mandatory
+
+`input`: the input samplesheet that conatins the information as described below.
+
+`outdir`: the output directory where the results will be stored.
+
+`bindcraft_container`: the path to bindcraft container that is needed run the workflow.
+
+### Optional
+
 ## Samplesheet input
 
 You will need to create a samplesheet with information about the binder design job before running the pipeline. Use this parameter to specify its location. It has to be a comma-separated file with a header row as shown in the examples below.
@@ -43,7 +55,7 @@ An [example samplesheet](../assets/samplesheet.csv) has been provided with the p
 The typical command for running the pipeline is as follows:
 
 ```bash
-nextflow run Australian-Structural-Biology-Computing/bindflow --input ./samplesheet.csv --outdir ./results -profile docker --batches 1
+nextflow run Australian-Structural-Biology-Computing/bindflow --input ./samplesheet.csv --outdir ./results -profile docker --batches 1 --bindcraft_container ./bindcraft.img
 ```
 
 This will launch the pipeline with the `docker` configuration profile. See below for more information about profiles.
@@ -80,6 +92,36 @@ outdir: './results/'
 ```
 
 You can also generate such `YAML`/`JSON` files via [nf-core/launch](https://nf-co.re/launch).
+
+
+### Running the pipeline on GADI at NCI
+
+Bindfolw configuration contains `gadi` profile with a subset of configuration for smooth executions on GADI. The profile utilises singularity for the executions and most of the containers are available in the singularity cach directory under `/g/data/if89/singularity_cache/`.
+
+Join project [if89](https://australianbiocommons.github.io/ables/if89/) to access this cache and avoid repeated downloads.
+
+You must provide a valid NCI project with GPU allocation via `--project`. This project will be used for job debiting and storage access.
+
+We strongly recommended to join project if89 to access `/g/data/if89/singularity_cache/`
+
+Bring your own container! The config does not download Bindcraft containers. Use `--bindcraft_container` parameter.
+
+The typical command for running the pipeline on GADI is as follows:
+
+```bash
+nextflow run main.nf \
+ -profile gadi \
+  --project za08 \
+ --batches 1
+  --input assets/samplesheet.csv \
+ --bindcraft_container ./bindcraft.img \
+  --use_dgxa100 false \
+ --outdir results/
+  
+```
+
+This will launch the pipeline with the `gadi` configuration profile. The details of the configurations are available at `conf/gadi.config`
+
 
 ### Updating the pipeline
 
