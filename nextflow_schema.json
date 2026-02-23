@@ -52,9 +52,7 @@
             "properties": {
                 "bindcraft_container": {
                     "type": "string",
-                    "format": "file-path",
-                    "exists": true,
-                    "description": "Path to bindcraft container to be used during execution.",
+                    "description": "Bindcraft container reference. Use a local image path for Singularity/Apptainer or an OCI image URI (e.g. ghcr.io/org/image:tag) for Docker/Kubernetes.",
                     "help_text": "",
                     "fa_icon": "fas fa-file-csv"
                 },
@@ -98,6 +96,52 @@
                     "description": ".",
                     "help_text": "",
                     "fa_icon": "fas fa-file-json"
+                },
+                "gpu_per_task": {
+                    "type": "integer",
+                    "default": 1,
+                    "description": "Number of GPUs requested per BINDCRAFT task in k8s_gpu profile.",
+                    "help_text": ""
+                },
+                "gpu_device_count": {
+                    "type": "integer",
+                    "default": 1,
+                    "description": "Number of visible GPUs used for local task-to-GPU mapping (CUDA_VISIBLE_DEVICES).",
+                    "help_text": ""
+                },
+                "gpu_parallel_tasks": {
+                    "type": "integer",
+                    "default": 1,
+                    "description": "Maximum number of concurrent BINDCRAFT GPU tasks in k8s_gpu profile.",
+                    "help_text": ""
+                },
+                "k8s_namespace": {
+                    "type": "string",
+                    "description": "Kubernetes namespace for workflow pods.",
+                    "help_text": ""
+                },
+                "k8s_service_account": {
+                    "type": "string",
+                    "description": "Kubernetes service account used by workflow pods.",
+                    "help_text": ""
+                },
+                "k8s_storage_claim": {
+                    "type": "string",
+                    "description": "RWX PVC claim name to mount as shared pipeline storage in k8s_gpu profile.",
+                    "help_text": ""
+                },
+                "k8s_storage_mount": {
+                    "type": "string",
+                    "default": "/workspace",
+                    "description": "Mount path inside pods for the shared PVC.",
+                    "help_text": ""
+                },
+                "k8s_pull_policy": {
+                    "type": "string",
+                    "default": "IfNotPresent",
+                    "description": "Image pull policy for Kubernetes pods.",
+                    "enum": ["Always", "IfNotPresent", "Never"],
+                    "help_text": ""
                 }
 
             }

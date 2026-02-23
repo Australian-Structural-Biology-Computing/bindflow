@@ -20,8 +20,17 @@ process BINDCRAFT {
     script:
     def version = "1.2.0"
     def args = task.ext.args ?: ''
+    def gpuCount = (params.gpu_device_count ?: 1) as Integer
+    def gpuId = ((task.index ?: 1) - 1) % gpuCount
     
     """
+    export CUDA_VISIBLE_DEVICES=${gpuId}
+    export XLA_PYTHON_CLIENT_PREALLOCATE=false
+    export XLA_PYTHON_CLIENT_ALLOCATOR=platform
+    export XLA_PYTHON_CLIENT_MEM_FRACTION=0.60
+    export TF_FORCE_GPU_ALLOW_GROWTH=true
+    echo "BINDCRAFT task ${task.index ?: 1} using CUDA_VISIBLE_DEVICES=\$CUDA_VISIBLE_DEVICES"
+
     /app/run_bindcraft.sh \\
         --settings ${target_file} \\
         --filters ${filters} \\
