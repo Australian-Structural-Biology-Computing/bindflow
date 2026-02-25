@@ -116,17 +116,17 @@
                     "help_text": ""
                 },
                 "k8s_namespace": {
-                    "type": "string",
+                    "type": ["string", "null"],
                     "description": "Kubernetes namespace for workflow pods.",
                     "help_text": ""
                 },
                 "k8s_service_account": {
-                    "type": "string",
+                    "type": ["string", "null"],
                     "description": "Kubernetes service account used by workflow pods.",
                     "help_text": ""
                 },
                 "k8s_storage_claim": {
-                    "type": "string",
+                    "type": ["string", "null"],
                     "description": "RWX PVC claim name to mount as shared pipeline storage in k8s_gpu profile.",
                     "help_text": ""
                 },
